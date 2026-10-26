@@ -38,12 +38,13 @@ func (c *Client) Chat(ctx context.Context, message []openai.ChatCompletionMessag
 		Model:    c.model,
 		Messages: message,
 	}
+
 	res, err := c.api.Chat.Completions.New(ctx, params)
 	if err != nil {
-		return "", fmt.Errorf("Oepnrouter request Failed :%w", err)
+		return "", fmt.Errorf("OpenRouter request failed: %w", err)
 	}
 	if len(res.Choices) == 0 {
-		return "", fmt.Errorf("OpenROuter returned an empty response")
+		return "", fmt.Errorf("OpenRouter returned an empty response")
 	}
 
 	return res.Choices[0].Message.Content, nil

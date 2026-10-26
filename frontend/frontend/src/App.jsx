@@ -38,7 +38,6 @@ export default function App() {
         content: message,
       },
     ]);
-
     setLoading(true);
 
     try {
